@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>PsychNote V10</title>
+<title>PsychNote</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -12,19 +12,19 @@
 <!-- ================= TOPBAR ================= -->
 <header class="topbar">
 
-  <div class="top-left">
-    <button onclick="toggleSidebar()">☰</button>
-    <span class="app-title">PsychNote</span>
+  <div class="left">
+    <button class="icon" onclick="toggleSidebar()">☰</button>
+    <span class="logo">PsychNote</span>
   </div>
 
-  <div class="top-center">
+  <div class="center">
     <button onclick="toggleMenu('menuMode')">Mode</button>
     <button onclick="toggleMenu('menuType')">Type</button>
     <button onclick="toggleMenu('menuSortie')">Sortie</button>
-    <button onclick="toggleMenu('menuPolice')">Police</button>
+    <button onclick="toggleMenu('menuFont')">Police</button>
   </div>
 
-  <div class="top-right">
+  <div class="right">
     <button onclick="generateText()">Texte</button>
     <button onclick="generateQuestionnaire()">Questionnaire</button>
     <button onclick="generateTodo()">To Do</button>
@@ -36,96 +36,125 @@
 <!-- ================= SIDEBAR ================= -->
 <aside id="sidebar" class="sidebar">
 
-  <!-- IDENTITÉ -->
-  <section>
-    <h3>Patient</h3>
-    <div class="chips">
-      <span class="chip" onclick="setGender('homme')">Homme</span>
-      <span class="chip" onclick="setGender('femme')">Femme</span>
-    </div>
-  </section>
+  <!-- NAV TABS -->
+  <div class="tabs">
+    <span onclick="switchTab('clinique')" class="tab active">Clinique</span>
+    <span onclick="switchTab('traitement')" class="tab">Traitement</span>
+    <span onclick="switchTab('modules')" class="tab">Modules</span>
+  </div>
 
-  <!-- TYPE CLINIQUE -->
-  <section>
-    <h3>Évolution</h3>
-    <div class="chips">
-      <span class="chip" onclick="toggle('amelioration')">Amélioration</span>
-      <span class="chip" onclick="toggle('stable')">Stable</span>
-      <span class="chip" onclick="toggle('fragile')">Fragile</span>
-      <span class="chip" onclick="toggle('instable')">Instable</span>
-    </div>
-  </section>
+  <!-- ================= CLINIQUE ================= -->
+  <div id="tab-clinique" class="tab-content">
 
-  <!-- SYMPTÔMES -->
-  <section>
-    <h3>Clinique</h3>
-    <div class="chips">
-      <span class="chip" onclick="toggle('anhedonie')">Anhédonie</span>
-      <span class="chip" onclick="toggle('aboulie')">Aboulie</span>
-      <span class="chip" onclick="toggle('anxiete')">Anxiété</span>
-      <span class="chip" onclick="toggle('ruminations')">Ruminations</span>
-      <span class="chip" onclick="toggle('insomnie')">Insomnie</span>
-      <span class="chip" onclick="toggle('fatigue')">Fatigue</span>
-    </div>
-  </section>
+    <section>
+      <h4>Patient</h4>
+      <div class="chips">
+        <span class="chip" onclick="setGender('homme')">Homme</span>
+        <span class="chip" onclick="setGender('femme')">Femme</span>
+      </div>
+    </section>
 
-  <!-- RISQUE SUICIDAIRE -->
-  <section>
-    <h3>Idées noires</h3>
-    <div class="chips">
-      <span class="chip" onclick="toggle('idees_noires')">Présentes</span>
-      <span class="chip" onclick="toggle('passage_acte')">Passage à l’acte</span>
-      <span class="chip" onclick="toggle('aucune')">Absentes</span>
-    </div>
-  </section>
+    <section>
+      <h4>Évolution</h4>
+      <div class="chips">
+        <span class="chip" onclick="toggle('amelioration')">Amélioration</span>
+        <span class="chip" onclick="toggle('stable')">Stable</span>
+        <span class="chip" onclick="toggle('fragile')">Fragile</span>
+        <span class="chip" onclick="toggle('instable')">Instable</span>
+      </div>
+    </section>
 
-  <!-- CONSOMMATION -->
-  <section>
-    <h3>Consommation</h3>
-    <div class="chips">
-      <span class="chip important" onclick="openModal('alcoolModal')">Alcool</span>
-      <span class="chip" onclick="openModal('autreModal')">Autres</span>
-    </div>
-  </section>
+    <section>
+      <h4>Clinique</h4>
+      <div class="chips">
+        <span class="chip" onclick="toggle('anhedonie')">Anhédonie</span>
+        <span class="chip" onclick="toggle('aboulie')">Aboulie</span>
+        <span class="chip" onclick="toggle('anxiete')">Anxiété</span>
+        <span class="chip" onclick="toggle('ruminations')">Ruminations</span>
+        <span class="chip" onclick="toggle('insomnie')">Insomnie</span>
+        <span class="chip" onclick="toggle('fatigue')">Fatigue</span>
+      </div>
+    </section>
 
-  <!-- TRAITEMENT -->
-  <section>
-    <h3>Traitement</h3>
-    <div class="chips">
-      <span class="chip" onclick="addTraitement('Sertraline 50 mg')">Sertraline</span>
-      <span class="chip" onclick="addTraitement('Escitalopram 10 mg')">Escitalopram</span>
-      <span class="chip" onclick="addTraitement('Trazodone 100 mg')">Trazodone</span>
-      <span class="chip" onclick="addTraitement('Aripiprazole 5 mg')">Aripiprazole</span>
-      <span class="chip" onclick="addTraitement('Diazépam')">Diazépam</span>
-    </div>
-  </section>
+    <section>
+      <h4>Risque suicidaire</h4>
+      <div class="chips">
+        <span class="chip" onclick="toggle('idees_noires')">Idées noires</span>
+        <span class="chip" onclick="toggle('passage_acte')">Passage à l’acte</span>
+        <span class="chip" onclick="toggle('aucune')">Aucune</span>
+      </div>
+    </section>
 
-  <!-- SEVRAGE -->
-  <section>
-    <h3>Sevrage</h3>
-    <div class="chips">
-      <span class="chip" onclick="openModal('sevrageModal')">Créer schéma</span>
-    </div>
-  </section>
+    <section>
+      <h4>Contexte</h4>
+      <div class="chips">
+        <span class="chip" onclick="toggle('isolement')">Isolement</span>
+        <span class="chip" onclick="toggle('conflit')">Conflit</span>
+        <span class="chip" onclick="toggle('travail')">Travail</span>
+        <span class="chip" onclick="toggle('familial')">Familial</span>
+      </div>
+    </section>
 
-  <!-- CONTEXTE -->
-  <section>
-    <h3>Contexte</h3>
-    <div class="chips">
-      <span class="chip" onclick="toggle('isolement')">Isolement</span>
-      <span class="chip" onclick="toggle('conflit')">Conflit</span>
-      <span class="chip" onclick="toggle('professionnel')">Travail</span>
-      <span class="chip" onclick="toggle('familial')">Familial</span>
-    </div>
-  </section>
+  </div>
+
+  <!-- ================= TRAITEMENT ================= -->
+  <div id="tab-traitement" class="tab-content hidden">
+
+    <section>
+      <h4>Antidépresseurs</h4>
+      <div class="chips">
+        <span class="chip" onclick="addTraitement('Sertraline 50 mg')">Sertraline</span>
+        <span class="chip" onclick="addTraitement('Escitalopram 10 mg')">Escitalopram</span>
+      </div>
+    </section>
+
+    <section>
+      <h4>Antipsychotiques</h4>
+      <div class="chips">
+        <span class="chip" onclick="addTraitement('Aripiprazole 5 mg')">Aripiprazole</span>
+      </div>
+    </section>
+
+    <section>
+      <h4>Hypnotiques</h4>
+      <div class="chips">
+        <span class="chip" onclick="addTraitement('Trazodone 100 mg')">Trazodone</span>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ================= MODULES ================= -->
+  <div id="tab-modules" class="tab-content hidden">
+
+    <section>
+      <h4>Consommation</h4>
+      <div class="chips">
+        <span class="chip important" onclick="openModal('alcoolModal')">Alcool</span>
+        <span class="chip" onclick="openModal('autreModal')">Autres</span>
+      </div>
+    </section>
+
+    <section>
+      <h4>Sevrage</h4>
+      <div class="chips">
+        <span class="chip" onclick="openModal('sevrageModal')">Créer</span>
+      </div>
+    </section>
+
+  </div>
 
 </aside>
 
 <!-- ================= MAIN ================= -->
 <main class="main">
 
-  <div id="output" class="output" contenteditable="true">
-Clique sur les éléments → génération en direct
+  <div class="editor">
+
+    <div id="output" contenteditable="true" class="output">
+Clique → ton texte se construit ici en direct
+    </div>
+
   </div>
 
 </main>
@@ -151,56 +180,45 @@ Clique sur les éléments → génération en direct
   <span onclick="setOutput('questionnaire')">Questionnaire</span>
 </div>
 
-<div id="menuPolice" class="menu hidden">
+<div id="menuFont" class="menu hidden">
   <span onclick="setFont('inter')">Inter</span>
   <span onclick="setFont('mono')">Mono</span>
-  <span onclick="setFont('serif')">Serif</span>
 </div>
 
 <!-- ================= MODALS ================= -->
 
-<!-- ALCOOL -->
 <div id="alcoolModal" class="modal hidden">
-  <div class="modal-content">
-    <h3>Consommation alcool</h3>
-
+  <div class="modal-box">
+    <h3>Alcool</h3>
     <input id="alcool_type" placeholder="Type">
-    <input id="alcool_quantite" placeholder="Quantité / jour">
-    <input id="alcool_date" placeholder="Dernière consommation">
-    <input id="alcool_debut" placeholder="Début consommation">
-    <input id="alcool_fonction" placeholder="Fonction (anxiété, social...)">
-
+    <input id="alcool_quantite" placeholder="Quantité">
+    <input id="alcool_date" placeholder="Dernière conso">
+    <input id="alcool_fonction" placeholder="Fonction">
     <button onclick="saveAlcool()">Valider</button>
   </div>
 </div>
 
-<!-- AUTRES CONSOS -->
 <div id="autreModal" class="modal hidden">
-  <div class="modal-content">
+  <div class="modal-box">
     <h3>Autres consommations</h3>
     <textarea id="autre_conso"></textarea>
     <button onclick="saveAutre()">Valider</button>
   </div>
 </div>
 
-<!-- SEVRAGE -->
 <div id="sevrageModal" class="modal hidden">
-  <div class="modal-content">
+  <div class="modal-box">
     <h3>Sevrage</h3>
-
     <select id="sevrage_molecule">
       <option>Valium</option>
       <option>Temesta</option>
     </select>
-
-    <input id="sevrage_dose" placeholder="Dose initiale">
-    <input id="sevrage_jours" placeholder="Nombre de jours">
-
+    <input id="sevrage_dose" placeholder="Dose">
+    <input id="sevrage_jours" placeholder="Jours">
     <button onclick="saveSevrage()">Créer</button>
   </div>
 </div>
 
-<!-- ================= SCRIPT ================= -->
 <script src="script.js"></script>
 
 </body>
