@@ -1,0 +1,237 @@
+/* ================= RESET ================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #000;
+  color: #d6d6d6;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+}
+
+/* ================= TOPBAR ================= */
+.topbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  background: #050505;
+  border-bottom: 1px solid #111;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  z-index: 100;
+}
+
+.app-title {
+  font-weight: 500;
+  font-size: 13px;
+  color: #aaa;
+  margin-left: 6px;
+}
+
+.topbar button {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 12px;
+  margin: 0 4px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.topbar button:hover {
+  color: #fff;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  width: 240px;
+  height: calc(100% - 50px);
+  background: #050505;
+  border-right: 1px solid #111;
+  padding: 12px;
+  overflow-y: auto;
+  transition: 0.25s ease;
+}
+
+.sidebar.hidden {
+  transform: translateX(-100%);
+}
+
+/* ================= SECTIONS ================= */
+section {
+  margin-bottom: 18px;
+}
+
+section h3 {
+  font-size: 11px;
+  font-weight: 500;
+  color: #777;
+  margin-bottom: 6px;
+}
+
+/* ================= CHIPS ================= */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.chip {
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 20px;
+  border: 1px solid #1a1a1a;
+  cursor: pointer;
+  color: #aaa;
+  transition: 0.15s;
+}
+
+.chip:hover {
+  color: #fff;
+  border-color: #333;
+}
+
+.chip.active {
+  background: #1f1f1f;
+  border-color: #444;
+  color: #fff;
+}
+
+.chip.important {
+  border-color: #555;
+}
+
+/* ================= MAIN ================= */
+.main {
+  margin-left: 240px;
+  padding: 70px 40px 40px 40px;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* ================= OUTPUT ================= */
+.output {
+  max-width: 800px;
+  line-height: 1.65;
+  font-size: 15px;
+  white-space: pre-wrap;
+  outline: none;
+  color: #eaeaea;
+}
+
+/* effet texte vivant */
+.output:focus {
+  color: #ffffff;
+}
+
+/* ================= MENUS ================= */
+.menu {
+  position: fixed;
+  top: 55px;
+  background: #0a0a0a;
+  border: 1px solid #222;
+  padding: 8px;
+  border-radius: 6px;
+  z-index: 200;
+}
+
+.menu span {
+  display: block;
+  font-size: 12px;
+  padding: 4px 8px;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.menu span:hover {
+  color: #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ================= MODALS ================= */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 300;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #0a0a0a;
+  border: 1px solid #222;
+  padding: 20px;
+  width: 320px;
+  border-radius: 8px;
+}
+
+.modal-content h3 {
+  font-size: 13px;
+  margin-bottom: 10px;
+  color: #aaa;
+}
+
+/* inputs */
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 6px;
+  background: #050505;
+  border: 1px solid #222;
+  color: #ddd;
+  font-size: 12px;
+}
+
+.modal-content button {
+  width: 100%;
+  padding: 6px;
+  background: #111;
+  border: 1px solid #333;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  color: #fff;
+  border-color: #555;
+}
+
+/* ================= SCROLL ================= */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #222;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .main {
+    margin-left: 0;
+    padding: 70px 20px;
+  }
+}
